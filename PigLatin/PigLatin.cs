@@ -1,23 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PigLatin
+namespace TEST
 {
     class Program
     {
-        public static void Main()
+        static void Main(string[] args)
         {
-            // your code goes here
-            Console.WriteLine("Please enter a word.");
+            Console.WriteLine("Enter a word, Now! ");
+            string english = Console.ReadLine();
+            char[] vowel = { 'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U' };
+            int firstvow = english.IndexOfAny(vowel);
+            int length = english.Length;
+            string last = english.Substring(english.Length - 1, 1);
+            int lastlet = last.IndexOfAny(vowel);
+            string pigone = english.Substring(firstvow, length - firstvow);
+            string pigtwo = english.Substring(0, firstvow);
+            Console.WriteLine("");
+            Console.WriteLine("in pig latin is");
+            Console.WriteLine("");
+            if (firstvow < 1 && lastlet > -1)
+            {
+                Console.WriteLine(english + "yay");
+            }
+            else if (firstvow < 1 && lastlet < 0)
+            {
+                Console.WriteLine(english + "ay");
+            }
+            else if (firstvow < 0)
+            {
+                Console.WriteLine(english + "ay");
+            }
+            else
+            {
+                Console.WriteLine(pigone + pigtwo + "ay");
+            }
 
-            // leave this command at the end so your program does not close automatically
-            Console.ReadLine();
-        }
-        
-        public static string TranslateWord(string word)
-        {
-            // your code goes here
-
-            return word;
+            Console.WriteLine();
         }
     }
 }
