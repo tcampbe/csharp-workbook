@@ -6,46 +6,151 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    class Program
+    public class Program
     {
+        public static string[] board = new string[10] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        public static string winner;
         public static void Main(string[] args)
         {
-            static string[,] board = new String[9];
+            // public static string currentPlayer;
+            string currentPlayer = "x";
+            printBoard();
+            placeMark(currentPlayer);
+            Console.ReadKey();
         }
 
-        /*  static string[,] board: this variable represents your 3x3 tic tac toe board
-
-            static String currentPlayer: this variable represents your current player (X or O)
-        */
-
-
-        /*  static void placeMark() : this method should print out the current players 
-                                      turns (X or O), ask the user for their row and 
-                                      column inputs, and update the board.
-
-            static bool isHorizonalWin(): this method should check if the current player
-                                          has won horizontally
-
-            static bool isVerticalWin(): this method should check if the current player 
-                                         has won vertically
-
-            static bool isDiagonalWin(): this method should check if the current player 
-                                         has won diagonally
-
-            static bool hasWon(): this method should check if the current player has won
-
-            static bool isTie(): this methods checks if the game is over and is a tie
-        */
-        //    static void printBoard(): this method should print the board to the console.
-        static void printBoard()
+        public static void printBoard()
         {
-            Console.WriteLine("/---|---|---\\");
-            Console.WriteLine("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");
-            Console.WriteLine("|-----------|");
-            Console.WriteLine("| " + board[3] + " | " + board[4] + " | " + board[5] + " |");
-            Console.WriteLine("|-----------|");
-            Console.WriteLine("| " + board[6] + " | " + board[7] + " | " + board[8] + " |");
-            Console.WriteLine("/---|---|---\\");
+            Console.WriteLine("TicTacToe");
+            Console.WriteLine("");
+            Console.WriteLine("Player 1 is X");
+            Console.WriteLine("");
+            Console.WriteLine("Player 2 is o");
+            Console.WriteLine("");
+            Console.WriteLine("/ --- | --- | --- \\");
+            Console.WriteLine("   {0}  |  {1}  |  {2}   ", board[1], board[2], board[3]);
+            Console.WriteLine("|-----------------|");
+            Console.WriteLine("   {0}  |  {1}  |  {2}   ", board[4], board[5], board[6]);
+            Console.WriteLine("|-----------------|");
+            Console.WriteLine("   {0}  |  {1}  |  {2}   ", board[7], board[8], board[9]);
+            Console.WriteLine("/ --- | --- | --- \\");
+
+            Console.WriteLine();
+        }
+
+        public static void placeMark(string currentPlayer)
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                Console.WriteLine("Player " + currentPlayer + " pick a Square");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                string x = currentPlayer;
+                board[choice] = x;
+                Console.Clear();
+                printBoard();
+                horizontalWin();
+                verticalWin();
+                diagonalWin();
+                if (currentPlayer == winner)
+                {
+                    break;
+                }
+                else
+                {
+                    if (currentPlayer == "x")
+                        {
+                            currentPlayer = "o";
+                        }
+                    else
+                        {
+                            currentPlayer = "x";
+                        }
+                }
+
+                Console.WriteLine();
+            }
+            isTie();
+            Console.WriteLine();
+            Console.WriteLine("Game Over");
+            Console.WriteLine();
+
+            Console.WriteLine();
+        }
+
+        public static void horizontalWin()
+        {
+            if ((board[1] == board[2] && board[2] == board[3]))
+            {
+                winner = board[1];
+                Console.WriteLine(board[1] + " WINS!!!");
+            }
+            else if ((board[4] == board[5] && board[5] == board[6]))
+            {
+                winner = board[4];
+                Console.WriteLine(board[4] + " WINS!!!");
+            }
+            else if ((board[7] == board[8] && board[8] == board[9]))
+            {
+                winner = board[7];
+                Console.WriteLine(board[7] + " WINS!!!");
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public static void verticalWin()
+        {
+            if ((board[1] == board[4] && board[4] == board[7]))
+            {
+                winner = board[1];
+                Console.WriteLine(board[1] + " WINS!!!");
+            }
+            else if ((board[2] == board[5] && board[5] == board[8]))
+            {
+                winner = board[2];
+                Console.WriteLine(board[2] + " WINS!!!");
+            }
+            else if ((board[3] == board[6] && board[6] == board[9]))
+            {
+                winner = board[3];
+                Console.WriteLine(board[3] + " WINS!!!");
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public static void diagonalWin()
+        {
+            if ((board[1] == board[5] && board[5] == board[9]))
+            {
+                winner = board[1];
+                Console.WriteLine(board[1] + " WINS!!!");
+            }
+            else if ((board[3] == board[5] && board[5] == board[7]))
+            {
+                winner = board[3];
+                Console.WriteLine(board[3] + " WINS!!!");
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public static void isTie()
+        {
+            if ((winner != "x" && winner != "o")) 
+                {
+                    Console.WriteLine("TIE GAME !!!");
+                }
+            else
+            {
+                return;
+            }
         }
 
     }
