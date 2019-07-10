@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\gradebook"
   ],
-  "SelectedNode": "\\TicTacToe",
+  "SelectedNode": "\\gradebook\\gradebook.sln",
   "PreviewInSolutionExplorer": false
 }
