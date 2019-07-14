@@ -8,30 +8,25 @@ namespace Mastermind
 {
     class Program
     {
-        // public static string[] secret = new string[2] { "0", "0" };
         
+
         public static void Main(string[] args)
         {
+            Random generatora = new Random();
+           int colora = generatora.Next(1, 4);
+
             int guessa = 4;
             string picka = "a";
             int clue1 = 3;
             int guessb = 4;
             string pickb = "a";
             int clue2 = 3;
-            Random generatora = new Random();
-            int colora = generatora.Next(1, 4);
 
-            Random generatorb = new Random();
-            int colorb = generatorb.Next(1, 4);
+            Console.WriteLine("");
 
-            Console.WriteLine("MASTERMIND!!!!");
-            Console.WriteLine();
-            Console.WriteLine("I have 3 colors in my mind.");
-            Console.WriteLine();
-            Console.WriteLine("Red, Yellow, and Blue!");
-            Console.WriteLine();
-            Console.WriteLine("Can you gues which two I have chosen???");
-            Console.WriteLine();
+            int colorb = generatora.Next(1, 4);
+
+            printGame();
 
             while (clue2 != 2)
             {
@@ -95,5 +90,19 @@ namespace Mastermind
             Console.ReadKey();
 
         }
+
+        public static void printGame()
+        {
+            Console.WriteLine("MASTERMIND!!!!");
+            Console.WriteLine();
+            Console.WriteLine("I have 3 colors in my mind.");
+            Console.WriteLine();
+            Console.WriteLine("Red, Yellow, and Blue!");
+            Console.WriteLine();
+            Console.WriteLine("Can you gues which two I have chosen???");
+            Console.WriteLine();
+        }
+
+        
     }
 }

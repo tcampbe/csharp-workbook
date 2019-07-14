@@ -14,6 +14,9 @@ namespace CheckpointOneHanoi
         {
             // uae stacks to push and pop numbers 1-4 from stack a to stack b and c 
             // uae peak ?? to compare the pop to the top in new stack
+
+            // try putting stacks in a dictionary
+
             Stack<int> a = new Stack<int>();
             a.Push(4);
             a.Push(3);
@@ -22,89 +25,210 @@ namespace CheckpointOneHanoi
             Stack<int> b = new Stack<int>();
             Stack<int> c = new Stack<int>();
 
+            string from;
+            string to;
 
-            int play = 1;
-            while (play == 1)
+            int[] win = new int[] { 1, 2, 3, 4 };
+
+            bool play = false;
+
+            while (play == false)
             {
-                Console.Write("A  ");
-                PrintStack(a);
-                Console.WriteLine();
-                Console.WriteLine();
-
-                Console.Write("B  ");
-                PrintStack(b);
-                Console.WriteLine();
-                Console.WriteLine();
-
-                Console.Write("C  ");
-                PrintStack(c);
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
+                Console.Clear();
+                
+                printGame(a, b, c);
 
                 Console.WriteLine("Pick a letter to move from.");
-                string from = Console.ReadLine().ToLower();
+                from = Console.ReadLine().ToLower();
                 Console.WriteLine();
                 Console.WriteLine("Pick a letter to move to.");
-                string to = Console.ReadLine().ToLower();
-
+                to = Console.ReadLine().ToLower();
+                
                 Console.WriteLine();
                 Console.WriteLine();
 
                 if (from == "a")
                 {
-                    if (to == "b")
+                    if (a.Count == 0)
                     {
-                        b.Push(a.Pop());
+                        continue;
+                    }
+                    else if (to == "b")
+                    {
+                        if (b.Count == 0 || b.Peek() > a.Peek())
+                        {
+                            b.Push(a.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else if (to == "c")
                     {
-                        c.Push(a.Pop());
+                        if (c.Count == 0 || c.Peek() > a.Peek())
+                        {
+                            c.Push(a.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Pick a letter to move to.");
+                        Console.WriteLine("Incorrect Input!");
+                        Console.WriteLine("Press any key to continue.");
+                        Console.WriteLine();
+                        Console.ReadKey();
+                        continue;
                     }
                 }
                 else if (from == "b")
                 {
-                    if (to == "a")
+                    if (b.Count == 0)
                     {
-                        a.Push(b.Pop());
+                        continue;
+                    }
+                    else if (to == "a")
+                    {
+                        if (a.Count == 0 || a.Peek() > b.Peek())
+                        {
+                            a.Push(b.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else if (to == "c")
                     {
-                        c.Push(b.Pop());
+                        if (c.Count == 0 || c.Peek() > b.Peek())
+                        {
+                            c.Push(b.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Pick a letter to move to.");
+                        Console.WriteLine("Incorrect Input!");
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
+                        continue;
                     }
                 }
                 else if (from == "c")
                 {
-                    if (to == "a")
+                    if (c.Count == 0)
                     {
-                        a.Push(c.Pop());
+                        continue;
+                    }
+                    else if (to == "a")
+                    {
+                        if (a.Count == 0 || a.Peek() > c.Peek())
+                        {
+                            a.Push(c.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else if (to == "b")
                     {
-                        b.Push(c.Pop());
+                        if (b.Count == 0 || b.Peek() > c.Peek())
+                        {
+                            b.Push(c.Pop());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Input!");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            continue;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Pick a letter to move to.");
+                        Console.WriteLine("Incorrect Input!");
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
+                        continue;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Pick a letter to move from.");
+                    Console.WriteLine("Incorrect Input!");
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ReadKey();
+                    continue;
                 }
-                Console.Clear();
+
+                // test for win
+                int[] test1 = b.ToArray();
+                if (test1.SequenceEqual(win))
+                {
+                    Console.WriteLine("WIN! Tower moved from A to C !!");
+                    play = true;
+                    break;
+                }
+
+                int[] test2 = c.ToArray();
+                if (test2.SequenceEqual(win))
+                {
+                    Console.WriteLine("WIN! Tower moved from A to C !!");
+                    play = true;
+                    break;
+                }
+
             }
+
             Console.WriteLine("");
 
             Console.ReadKey();
+        }
+
+        public static void printGame(Stack<int> a, Stack<int> b, Stack<int> c)
+        {
+            Console.Write("A  ");
+            PrintStack(a);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.Write("B  ");
+            PrintStack(b);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.Write("C  ");
+            PrintStack(c);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public static void PrintStack(Stack<int> a)

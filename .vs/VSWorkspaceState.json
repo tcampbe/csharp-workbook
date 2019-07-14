@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\gradebook"
+    "\\CheckpointOneHanoi",
+    "\\PigLatin"
   ],
-  "SelectedNode": "\\gradebook\\gradebook.sln",
+  "SelectedNode": "\\CheckpointOneHanoi\\CheckpointOneHanoi.sln",
   "PreviewInSolutionExplorer": false
 }
