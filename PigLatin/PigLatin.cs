@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime;
 
 namespace PigLatin
 {
@@ -17,8 +18,21 @@ namespace PigLatin
             int length = english.Length;
             string last = english.Substring(english.Length - 1, 1);
             int lastlet = last.IndexOfAny(vowel);
-            string pigone = english.Substring(firstvow, length - firstvow);
-            string pigtwo = english.Substring(0, firstvow);
+
+            string pigone;
+            string pigtwo;
+
+            if (firstvow == -1)
+            {
+                pigone = "";
+                pigtwo = english;
+            }
+            else
+            {
+                pigone = english.Substring(firstvow, length - firstvow);
+                pigtwo = english.Substring(0, firstvow);
+            }
+
             Console.WriteLine("");
             Console.WriteLine("in pig latin is");
             Console.WriteLine("");
