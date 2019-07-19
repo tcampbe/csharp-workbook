@@ -10,52 +10,45 @@ namespace PoCos
     {
         static void Main(string[] args)
         {
-            Car snowCar = new Car("white");
-            Car magicalCar = new Car("rainbow");
-            Car hippyCar = new Car("tiedye");
+            Driver joe = new Driver();
+            joe.FirstName = "Joe";
+            joe.LastName = "Smith";
+            joe.LicenseNumber = 10;
+            joe.Gender = "Male";
 
-            Console.WriteLine(snowCar.Color); //=> "white"
-            Console.WriteLine(magicalCar.Color); //=> "rainbow"
-            Console.WriteLine(hippyCar.Color); //=> "tiedye"          
+            Driver mary = new Driver();
+            mary.FirstName = "Mary";
+            mary.LastName = "Donalds";
+            mary.LicenseNumber = 31;
+            mary.Gender = "Female";
 
-
-                        /* Car car1 = new Car();
-                        car1.make = "Mazda";
-                        car1.model = "CX-5";
-                        car1.numDoors = 4;
-                        car1.vin = "ABCDEFGHIJKLM";
-
-                        Car car2 = new Car();
-                        car2.make = "BMW";
-                        car2.model = "325";
-                        car2.numDoors = 4;
-                        car2.vin = "NOPQRSTUVWXYZ";
-
-                        Console.WriteLine("Car1 is a {0} {1} with {2} doors", 
-                            car1.make, car1.model, car1.numDoors 
-                            );
-
-                        Console.WriteLine("Car2 is a {0} {1} with {2} doors",
-                            car2.make, car2.model, car2.numDoors
-                            ); */
-
-            /* Person joe = new Person();
-            joe.firstName = "Joe";
-            joe.lastName = "Smith";
-            joe.age = 10;
-
-            Person mary = new Person();
-            mary.firstName = "Mary";
-            mary.lastName = "Donalds";
-            mary.age = 31;
-
-            Console.WriteLine("{0} {1} is {2} years old.",
-                joe.firstName, joe.lastName, joe.age
+            Console.WriteLine("{0} license number {1}, {2}.",
+                joe.Gender, joe.LicenseNumber, joe.FullName()
                 );
 
-            Console.WriteLine("{0} {1} is {2} years old.",
-                mary.firstName, mary.lastName, mary.age
-                ); */
+            Console.WriteLine("{0} license number {1}, {2}.",
+                mary.Gender, mary.LicenseNumber, mary.FullName()
+                );
+
+            Book saga = new Book();
+            saga.Title = "The Story";
+            saga.Authors = new string[] { "a", "b" };
+            saga.Pages = 321;
+            saga.SKU = "RH321TS1";
+            saga.Publisher = "Random House";
+            saga.Price = 99.99m;
+
+            Console.WriteLine( "From {0}: {1} by {2}: {3} Pages: " +
+                "Price ${4}: SKU {5}", saga.Publisher, saga.Title, 
+                saga.Authors[0], saga.Pages, saga.Price, saga.SKU 
+                );
+
+
+            Plane snowPlane = new Plane("white");
+
+
+            Console.WriteLine(snowPlane.Color); //=> "white"
+
 
 
 
@@ -65,49 +58,52 @@ namespace PoCos
         
     }
 
-    /* public class driversLicense
+    public class Driver
     {
-        public string licensee { get; set; }
+        public String FirstName;
+        public String LastName;
+        public int LicenseNumber;
+        public String Gender;
 
-        public driversLicense(string field)
+
+        public string FullName()
         {
-            licensee = field;
+            string space = " ";
+            string FullName = String.Concat(FirstName, space, LastName);
+            return FullName;
+
         }
 
-        string firstName = new licensee("tivo");
-        string lastName = "duentes";
-        string gender = "alpha";
-        string licenseNumber = "0000000001";
-    } */
+    }
 
-    public class Car
+    public class Book
     {
+        public String Title;
+        public String[] Authors;
+        public int Pages;
+        public String SKU;
+        public String Publisher;
+        public Decimal Price;
+
+    }
+
+    public class Plane
+    {
+        public String Manufacturer;
+        public String Model;
+        public String Variant;
+        public int Capacity;
+        public String Engines;
+
         public string Color { get; set; }
 
-        public Car(string initialColor)
+        public Plane(string initialColor)
         {
             Color = initialColor;
         }
 
-        /* Car randomCar = new Car();
-        randomCar.Color = "blue";
-        Console.WriteLine(randomCar.Color); */
-
-        /* public string make;
-        public string model;
-        public string vin;
-        public int numDoors; */
-
-
     }
 
-    /* public class Person
-    {
-        public String firstName;
-        public String lastName;
-        public int age;
-
-    } */
 
     
 }
