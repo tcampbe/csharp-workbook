@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("rocktest")]
+[assembly: AssemblyTitle("ToDoItem")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("rocktest")]
+[assembly: AssemblyProduct("ToDoItem")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4ae4cb33-605d-4d86-a60b-36945390efb9")]
+[assembly: Guid("a03a9a90-b4e6-4a9c-88ca-ba2017632078")]
 
 // Version information for an assembly consists of the following four values:
 //

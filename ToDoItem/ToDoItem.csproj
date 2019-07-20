@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4AE4CB33-605D-4D86-A60B-36945390EFB9}</ProjectGuid>
+    <ProjectGuid>{A03A9A90-B4E6-4A9C-88CA-BA2017632078}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>rocktest</RootNamespace>
-    <AssemblyName>rocktest</AssemblyName>
+    <RootNamespace>ToDoItem</RootNamespace>
+    <AssemblyName>ToDoItem</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
