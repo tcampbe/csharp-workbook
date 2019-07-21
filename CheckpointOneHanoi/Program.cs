@@ -192,6 +192,8 @@ namespace CheckpointOneHanoi
                 int[] test1 = b.ToArray();
                 if (test1.SequenceEqual(win))
                 {
+                    Console.Clear();
+                    printGame(a, b, c);
                     Console.WriteLine("WIN! Tower moved from A to C !!");
                     play = true;
                     break;
@@ -200,12 +202,16 @@ namespace CheckpointOneHanoi
                 int[] test2 = c.ToArray();
                 if (test2.SequenceEqual(win))
                 {
+                    Console.Clear();
+                    printGame(a, b, c);
                     Console.WriteLine("WIN! Tower moved from A to C !!");
                     play = true;
                     break;
                 }
 
             }
+
+
 
             Console.WriteLine("");
 
