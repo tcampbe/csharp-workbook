@@ -10,7 +10,22 @@ namespace RockPaperGame
     {
         static void Main(string[] args)
         {
+                Console.WriteLine("Rock, Paper, Scissors! \r\n Enter P to " +
+                                    "Play or E to exit.");
+                string play = Console.ReadLine().ToLower();
 
+            while (play == "p")
+            {
+                printGame();
+
+                Console.WriteLine("Rock, Paper, Scissors! \r\n Enter P to " +
+                    "Play or E to exit.");
+                play = Console.ReadLine().ToLower();
+            }
+        }
+
+        public static void printGame()
+        {
 
             Console.WriteLine("To Play rock, paper, scissors, ");
             Console.WriteLine("Enter ");
@@ -18,14 +33,28 @@ namespace RockPaperGame
             Console.WriteLine("2 for Paper");
             Console.WriteLine("3 for Scissors");
             Console.WriteLine();
-            int hand;
-            hand = Convert.ToInt32(Console.ReadLine());
+            int hand = 1;
+            while (hand == 1 || hand == 2 || hand == 3) { 
+                try
+                {
+                    hand = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Enter ");
+                    Console.WriteLine("1 for Rock");
+                    Console.WriteLine("2 for Paper");
+                    Console.WriteLine("3 for Scissors");
+                    Console.WriteLine();
+                }
+            }
             Random generator = new Random();
             // creates a number 1, 2 or 3
             int randomNumber = generator.Next(1, 4);
 
             compareHands(hand, randomNumber);
-            
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -34,14 +63,31 @@ namespace RockPaperGame
             Console.WriteLine("You Picked = " + hand);
             Console.WriteLine();
             Console.WriteLine("Computer Picked = " + randomNumber);
-
-
-
-            Console.ReadKey();
         }
+
         public static void compareHands(int hand, int randomNumber)
         {
-            switch (hand)
+
+            if (hand == randomNumber) 
+            {
+                Console.WriteLine("You both picked {0}, Tie!!!!", hand);
+            }
+            else if (hand == (randomNumber + 1) || hand == (randomNumber - 2))
+            {
+                Console.WriteLine("The computer picked {0}, You win!!!!", randomNumber);
+            }
+            else if (hand == (randomNumber - 1) || hand == (randomNumber + 2)) 
+            {
+                Console.WriteLine("The computer picked {0}, sorry, you lose.", randomNumber);
+            }
+            else
+            {
+                Console.WriteLine("Error. No Winners!");
+            }
+             
+
+
+            /*switch (hand)
             {
                 case 1:
                     switch (randomNumber)
@@ -106,7 +152,7 @@ namespace RockPaperGame
                 default:
                     Console.WriteLine("Error. No Winners!");
                     break;
-            }
+            } */
         }
     }
 }

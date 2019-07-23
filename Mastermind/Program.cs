@@ -35,14 +35,23 @@ namespace Mastermind
                 picka = picka.ToLower();
 
                 if (picka == "red")
+                {
                     guessa = 1;
-                else if (picka == "yellow")
-                    guessa = 2;
-                else if (picka == "blue")
-                    guessa = 3;
-                else
-                    guessa = 4;
 
+                }
+                else if (picka == "yellow")
+                {
+                    guessa = 2;
+
+                }
+                else if (picka == "blue")
+                {
+                    guessa = 3;
+                }
+                else
+                {
+                    guessa = 4;
+                }
                 Console.WriteLine();
 
                 Console.WriteLine("Enter your second pick.");

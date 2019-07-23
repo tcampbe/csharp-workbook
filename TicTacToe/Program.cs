@@ -14,12 +14,12 @@ namespace TicTacToe
         {
             // public static string currentPlayer;
             string currentPlayer = "x";
-            printBoard();
-            placeMark(currentPlayer);
+            PrintBoard();
+            PlaceMark(currentPlayer);
             Console.ReadKey();
         }
 
-        public static void printBoard()
+        public static void PrintBoard()
         {
             Console.WriteLine("TicTacToe");
             Console.WriteLine("");
@@ -38,19 +38,35 @@ namespace TicTacToe
             Console.WriteLine();
         }
 
-        public static void placeMark(string currentPlayer)
+        public static void PlaceMark(string currentPlayer)
         {
             for(int i = 0; i < 9; i++)
             {
-                Console.WriteLine("Player " + currentPlayer + " pick a Square");
-                int choice = Convert.ToInt32(Console.ReadLine());
+                int choice = 0; // assign choice
+                bool result = false; // assign result
+                while (!result)
+                {
+                    Console.WriteLine("Player " + currentPlayer + " pick a Square");
+                    result = int.TryParse(Console.ReadLine(), out choice);
+                    // if input is a number variable choice is assigned that number
+                    if (!result)
+                    {
+                        // if input is not a number print this and start the while loop over
+                        Console.WriteLine("Not a valid entry, please try again.");
+                    }
+                }
+                // the above code replaces the commented out code below -- it deals with nonvalid input
+
+                /* Console.WriteLine("Player " + currentPlayer + " pick a Square");
+                int choice = Convert.ToInt32(Console.ReadLine()); */
+
                 string x = currentPlayer;
                 board[choice] = x;
                 Console.Clear();
-                printBoard();
-                horizontalWin();
-                verticalWin();
-                diagonalWin();
+                PrintBoard();
+                HorizontalWin();
+                VerticalWin();
+                DiagonalWin();
                 if (currentPlayer == winner)
                 {
                     break;
@@ -69,7 +85,7 @@ namespace TicTacToe
 
                 Console.WriteLine();
             }
-            isTie();
+            IsTie();
             Console.WriteLine();
             Console.WriteLine("Game Over");
             Console.WriteLine();
@@ -77,7 +93,7 @@ namespace TicTacToe
             Console.WriteLine();
         }
 
-        public static void horizontalWin()
+        public static void HorizontalWin()
         {
             if ((board[1] == board[2] && board[2] == board[3]))
             {
@@ -94,13 +110,9 @@ namespace TicTacToe
                 winner = board[7];
                 Console.WriteLine(board[7] + " WINS!!!");
             }
-            else
-            {
-                return;
-            }
         }
 
-        public static void verticalWin()
+        public static void VerticalWin()
         {
             if ((board[1] == board[4] && board[4] == board[7]))
             {
@@ -117,13 +129,9 @@ namespace TicTacToe
                 winner = board[3];
                 Console.WriteLine(board[3] + " WINS!!!");
             }
-            else
-            {
-                return;
-            }
         }
 
-        public static void diagonalWin()
+        public static void DiagonalWin()
         {
             if ((board[1] == board[5] && board[5] == board[9]))
             {
@@ -135,22 +143,14 @@ namespace TicTacToe
                 winner = board[3];
                 Console.WriteLine(board[3] + " WINS!!!");
             }
-            else
-            {
-                return;
-            }
         }
 
-        public static void isTie()
+        public static void IsTie()
         {
             if ((winner != "x" && winner != "o")) 
                 {
                     Console.WriteLine("TIE GAME !!!");
                 }
-            else
-            {
-                return;
-            }
         }
 
     }
