@@ -13,11 +13,14 @@ namespace SuperHeroes
         {
             Humans.Add(new Person ("Jim Wock", "DogLover"));
             Humans.Add(new Person("Tuna Tinner", "Sanger"));
+            Humans.Add(new SuperHeroe("SuperTroy", "Teeny Tro", "Vocal Aerobics"));
+            Humans.Add(new Villain("Dirty Harvey", "Clim Westwood"));
 
             foreach (Person person in Humans)
             {
                 person.PrintGreeting();
             }
+            
             Console.ReadKey();
 
         }
@@ -56,7 +59,7 @@ namespace SuperHeroes
         public string RealName { get; set; }
         public string SuperPower { get; set; }
 
-        public SuperHeroe(string realName, string superPower)
+        public SuperHeroe(string name, string realName, string superPower) : base(name, null)
         {
             RealName = realName;
             SuperPower = superPower;
@@ -66,7 +69,7 @@ namespace SuperHeroes
         {
             Console.Write(Name + ":");
             Console.WriteLine(" I am {0}. when I am {1}, my super power" +
-                " is {3}", RealName, Name, SuperPower);
+                " is {2}", RealName, Name, SuperPower);
 
         }
     }
@@ -74,6 +77,12 @@ namespace SuperHeroes
     class Villain : Person
     {
         public String Nemesis;
+
+        public Villain(string name, string nemesis) : base(name, null)
+        {
+            Nemesis = nemesis;
+        }
+
 
         public override void PrintGreeting()
         {
@@ -86,5 +95,5 @@ namespace SuperHeroes
     
     
     
-    */
+    
 }

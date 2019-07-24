@@ -33,7 +33,7 @@ namespace gradebook
             }
 
             int sum = 0;
-            foreach (KeyValuePair<string, int[]> record in gpa)
+            foreach (var record in gpa)
             {
                 sum = 0;
                 int av = 0;
