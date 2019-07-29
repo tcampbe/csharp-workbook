@@ -10,77 +10,26 @@ namespace CarLot
     {
         static void Main(string[] args)
         {   //                                      First Car lot with 3 cars
-            CarLot Troys = new CarLot();
-            Troys.Name = "TMoney's Slammin' Rides";
-            Troys.Autos = new List<Vehicle>();
+            CarLot Troys = new CarLot("TMoney's Slammin' Rides");
 
-            Truck troys = new Truck();
-            Troys.AddCar(troys);
-            troys.License = "IMNO UG";
-            troys.Make = "Chervoling";
-            troys.Model = "C550";
-            troys.Price = "999.99";
-            troys.BedSize = "Scary Long";
+            Troys.AddCar(new Truck("IMNO UG", "Chervoling", "C550", "999.99", "Scary Long"));
 
-            Car sedan = new Car();
-            Troys.AddCar(sedan);
-            sedan.License = "UR P00R";
-            sedan.Make = "Cadolact";
-            sedan.Model = "La Desparado";
-            sedan.Price = "55k";
-            sedan.Doors = "4";
-            sedan.Type = "Sedan";
+            Troys.AddCar(new Car("UR P00R", "Cadolact", "La Desparado", "55k", "Sedan", "4"));
 
-            Car muscle = new Car();
-            Troys.AddCar(muscle);
-            muscle.License = "FSTR BSTR";
-            muscle.Make = "Evade";
-            muscle.Model = "Attacker";
-            muscle.Price = "43945.27";
-            muscle.Doors = "2";
-            muscle.Type = "Sportscar";
+            Troys.AddCar(new Car("FSTR BSTR", "Evade", "Attacker", "43945.27", "Sportscar", "2"));
 
             Troys.PrintLot(); 
 
             //                                      Second Car lot with 4 cars
-            CarLot Mama = new CarLot();
-            Mama.Name = "Mrs. Friskey's Shagin' Wagons";
-            Mama.Autos = new List<Vehicle>();
+            CarLot Mama = new CarLot("Mrs. Friskey's Shagin' Wagons");
 
-            Truck mamas = new Truck();
-            Mama.AddCar(mamas);
-            mamas.License = "LVR TRKR";
-            mamas.Make = "Frog";
-            mamas.Model = "River Raider";
-            mamas.Price = "1999.99";
-            mamas.BedSize = "Double";
+            Mama.AddCar(new Truck("LVR TRKR", "Frog", "River Raider", "1999.99", "Double"));
 
-            Car alamo = new Car();
-            Mama.AddCar(alamo);
-            alamo.License = "BIG FMLY";
-            alamo.Make = "VMB";
-            alamo.Model = "2210";
-            alamo.Price = "15k";
-            alamo.Doors = "4";
-            alamo.Type = "Station Wagon";
+            Mama.AddCar(new Car("BIG FMLY", "VMB", "2210", "15k", "Station Wagon", "4"));
 
-            Car creep = new Car();
-            Mama.AddCar(creep);
-            creep.License = "N0 1 RKN";
-            creep.Make = "Yuido";
-            creep.Model = "Sleeper 8";
-            creep.Price = "28951.27";
-            creep.Doors = "5";
-            creep.Type = "Van";
+            Mama.AddCar(new Car("N0 1 RKN", "Yuido", "Sleeper 8", "28951.27", "Van", "5"));
 
-            Car prom = new Car();
-            Mama.AddCar(prom);
-            prom.License = "1 NITE 4U";
-            prom.Make = "Ocelot";
-            prom.Model = "Party Hauler";
-            prom.Price = "534.28/Month";
-            prom.Doors = "8";
-            prom.Type = "Limo";
+            Mama.AddCar(new Car("1 NITE 4U", "Ocelot", "Party Hauler", "534.28/Month", "Limo", "8"));
 
             Mama.PrintLot();
 
@@ -92,11 +41,16 @@ namespace CarLot
     public class CarLot
     {
         public string Name { get; set; }
-
         public List<Vehicle> Autos { get; set; }
 
-        public void AddCar(Vehicle vehicle)
+        public CarLot(string name)
         {
+            Name = name;
+            Autos = new List<Vehicle>();
+        }
+
+        public void AddCar(Vehicle vehicle)
+        { // adds car to carlot list
             Autos.Add(vehicle);
         }
 
@@ -111,7 +65,6 @@ namespace CarLot
         }
     }
 
-
     public abstract class Vehicle
     {
         public string License { get; set; }
@@ -119,13 +72,26 @@ namespace CarLot
         public string Model { get; set; }
         public string Price { get; set; }
 
-        public abstract void PrintDetails();
-        // method with no body, because it can't be instantiated
+        public Vehicle(string license, string make, string model, string price)
+        {
+            License = license;
+            Make = make;
+            Model = model;
+            Price = price;
+        }
+
+        public abstract void PrintDetails(); // method with no body, because it can't be instantiated
     }
 
     class Truck : Vehicle
     {
         public string BedSize { get; set; }
+
+        public Truck(string license, string make, string model, string price, string bedSize) :
+            base(license, make, model, price)
+        {
+            BedSize = bedSize;
+        }
 
         public override void PrintDetails()
         { // overide abtract method specific to truck, prints relevant fields
@@ -134,13 +100,19 @@ namespace CarLot
                 " ${4}", Make, Model, BedSize, License, Price );
             Console.WriteLine();
         }
-
     }
 
     class Car : Vehicle
     {
         public string Type { get; set; }
         public string Doors { get; set; }
+
+        public Car(string license, string make, string model, string price, string type, string doors) :
+                base(license, make, model, price)
+        {
+            Type = type;
+            Doors = doors;
+        }
 
         public override void PrintDetails()
         { // overide abtract method specific to car, prints relevant fields
@@ -149,6 +121,5 @@ namespace CarLot
                 " ${5}", Make, Model, Type, Doors, License, Price);
             Console.WriteLine();
         }
-
     }
 }
