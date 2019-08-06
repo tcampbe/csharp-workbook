@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Rentable"
+    "\\Checkers\\Properties",
+    "\\hashtables"
   ],
-  "SelectedNode": "\\Rentable\\Rentable.sln",
+  "SelectedNode": "\\hashtables\\hashtables.sln",
   "PreviewInSolutionExplorer": false
 }
