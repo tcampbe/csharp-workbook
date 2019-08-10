@@ -24,7 +24,6 @@ public class Checkers
                     Checker c = new Checker(Color.Black, 5 + r, (r) % 2 + i);
                     checkers.Add(c);
                 }
-                ///NOTE: Can we combine the two "for" loops above into one "for" loop?
             }
         }
 
