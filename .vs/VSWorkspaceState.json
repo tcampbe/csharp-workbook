@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BookInventory"
   ],
-  "SelectedNode": "\\CarLot",
+  "SelectedNode": "\\BookInventory",
   "PreviewInSolutionExplorer": false
 }
