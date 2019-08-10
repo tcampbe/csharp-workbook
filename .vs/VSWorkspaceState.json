@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BookInventory"
+    "\\BookInventory",
+    "\\Checkers"
   ],
-  "SelectedNode": "\\BookInventory",
+  "SelectedNode": "\\BookInventory\\BookInventory.sln",
   "PreviewInSolutionExplorer": false
 }

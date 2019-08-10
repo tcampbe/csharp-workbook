@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 
-
 namespace BookInventory
 {
     class Program
@@ -81,18 +80,6 @@ namespace BookInventory
             optionsBuilder.UseSqlite("Data Source=" 
                 + DatabaseFile);
         }
-
-        /* class StudentsContext : DbContext
-    {
-
-        // This property corresponds to the table in our database
-        public DbSet<Student> students {get; set;}
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite(@"Data Source=c:\Users\me\Desktop\students.db");
-        }
-    } */
     }
 }
 
