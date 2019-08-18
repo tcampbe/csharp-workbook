@@ -79,7 +79,7 @@ namespace Checkers
 
         public Checker GetChecker(Position pos)
         {
-            Checker found = null;
+            Checker found = null;//instantiate a checker to see if one is there.
             foreach (Checker c in Checkers)
             {
                 if (pos.Equals(c.Position))
@@ -101,9 +101,10 @@ namespace Checkers
 
         public void MoveChecker(Checker checker, Position dest)
         {
-            Checkers.Remove(checker);
-            checker.Position = dest;
-            Checkers.Add(checker);
+            Checker newc = new Checker (checker.Team, dest.Row, dest.Col);
+            Checkers.Add(newc);
+            RemoveChecker(checker);
+            
         }
     }
 
@@ -146,36 +147,37 @@ namespace Checkers
 
                 string[] coord = Move.Split(',');
 
-                Checker checker = new Checker(Turn, Int32.Parse(coord[1]), Int32.Parse(coord[0]));
                 Position src = new Position(Int32.Parse(coord[1]), Int32.Parse(coord[0]));
                 Position dest = new Position(Int32.Parse(coord[3]), Int32.Parse(coord[2]));
-                if (IsLegalMove(checker, src, dest))
+                Checker checker = new Checker(Turn, src.Row, src.Col);
+
+                if (IsLegalMove(src, dest))
                 {
                     board.MoveChecker(checker, dest);
-                    var result = Turn == Color.Black ? Turn = Color.White : Turn = Color.Black;
+                    Color result = Turn == Color.Black ? Turn = Color.White : Turn = Color.Black;
+                    Console.WriteLine("Press Enter to move");
+                }
+                else 
+                {
+                    Console.WriteLine("Move not possible press enter to try again");
                 }
 
                 Console.ReadLine();
-
-                // ProcessInput();
             }
-            Console.ReadLine();
         }
         
-        public bool IsLegalMove(Checker checker, Position src, Position dest)
+        public bool IsLegalMove(Position src, Position dest)
         {
-            if (checker == null)
+            Checker to = board.GetChecker(dest);
+            if (to != null) 
             {
                 return false;
             }
-            if (checker.Team != Turn)
+            Checker from = board.GetChecker(src);
+            if (from == null) 
             {
-            return false;
+                return false;---------------
             }
-
-            int r = dest.Row;
-            int c = dest.Col;
-            // if (you suck)
 
 
             return true;

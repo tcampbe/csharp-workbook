@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Checkers"
+    "\\checkOneTest",
+    "\\ToDoCheckpoint"
   ],
-  "SelectedNode": "\\Checkers\\Checkers.sln",
+  "SelectedNode": "\\checkOneTest\\checkOneTest.sln",
   "PreviewInSolutionExplorer": false
 }
